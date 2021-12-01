@@ -1,7 +1,5 @@
 import axios from "axios";
 
-let nextTodoId = 1;
-
 export const addItem = (id, title) => {
   return {
     type: "ADD_ITEM",
@@ -88,12 +86,11 @@ export const addItemtoWeb = (title) => {
   return (dispatch) => {
     axios
       .post("https://mete-fake-server-app.herokuapp.com/items/", {
-        id: nextTodoId++,
         title,
         completed: false,
       })
       .then((response) => {
-        dispatch(addItem(response.id, response.data.title));
+        dispatch(addItem(response.data.id, response.data.title));
       })
       .catch((error) => {
         console.log(error);

@@ -1,12 +1,11 @@
 var initialState = [];
-var GLOBAL_ID = 1;
 const todos = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_ITEM":
       return [
         ...state,
         {
-          id: GLOBAL_ID++,
+          id: action.id,
           title: action.title,
           completed: false,
           isEdit: false,
